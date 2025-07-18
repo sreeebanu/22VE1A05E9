@@ -5,8 +5,9 @@ export default function Redirector() {
   const { shortcode } = useParams();
 
   useEffect(() => {
+  if (!shortcode || shortcode === "") return;
 
-    if (!shortcode|| shortcode === "") return;
+  const timeout = setTimeout(() => {
     const data = JSON.parse(localStorage.getItem("shortUrls")) || [];
     const entry = data.find((item) => item.short === shortcode);
 
@@ -15,7 +16,7 @@ export default function Redirector() {
         ...entry,
         clicks: [...entry.clicks, {
           timestamp: new Date(),
-          source: "localhost" 
+          source: "localhost"
         }]
       };
       const newData = data.map(d => d.short === shortcode ? updated : d);
@@ -24,7 +25,11 @@ export default function Redirector() {
     } else {
       alert("Link expired or not found.");
     }
-  }, [shortcode]);
+  }, 100); // Delay ensures app has mounted
+
+  return () => clearTimeout(timeout);
+}, [shortcode]);
+
 
   return <p>Redirecting...</p>;
 }
