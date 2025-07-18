@@ -10,7 +10,10 @@ const MAX_ENTRIES = 5;
 
 export default function ShortenerPage() {
   const [entries, setEntries] = useState([{ url: "", validity: "", shortcode: "" }]);
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(() => {
+  const stored = localStorage.getItem("shortUrls");
+  return stored ? JSON.parse(stored) : [];
+});
 
   const handleChange = (index, field, value) => {
     const newEntries = [...entries];
