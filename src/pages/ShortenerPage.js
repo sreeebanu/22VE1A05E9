@@ -93,17 +93,25 @@ export default function ShortenerPage() {
       </Button>
 
       <Box mt={4}>
-        <Typography variant="h5">Shortened URLs</Typography>
-        {results.map((r, i) => (
-          <Box key={i} mt={2}>
-            <Typography>
-              Original: {r.original} <br />
-              Short: <a href={`/#/${r.short}`}>https://sreeebanu.github.io/22VE1A05E9/#/${r.short}</a> <br />
-              Expires: {r.expiresAt.toLocaleString()}
-            </Typography>
-          </Box>
-        ))}
-      </Box>
+  <Typography variant="h5">Shortened URLs</Typography>
+  {results.map((r, i) => (
+    <Box key={i} mt={2}>
+      <Typography>
+        Original: {r.original} <br />
+        Short:{" "}
+        <a
+          href={`/#/${r.short}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {`https://sreeebanu.github.io/22VE1A05E9/#/${r.short}`}
+        </a> <br />
+        Expires: {new Date(r.expiresAt).toLocaleString()}
+      </Typography>
+    </Box>
+  ))}
+</Box>
+
     </Container>
   );
 }
