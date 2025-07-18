@@ -5,6 +5,8 @@ export default function Redirector() {
   const { shortcode } = useParams();
 
   useEffect(() => {
+
+    if (!shortcode|| shortcode === "") return;
     const data = JSON.parse(localStorage.getItem("shortUrls")) || [];
     const entry = data.find((item) => item.short === shortcode);
 
