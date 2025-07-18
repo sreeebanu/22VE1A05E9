@@ -25,7 +25,7 @@ export default function Redirector() {
     } else {
       alert("Link expired or not found.");
     }
-  }, 100); // Delay ensures app has mounted
+  }, 100);
 
   return () => clearTimeout(timeout);
 }, [shortcode]);
