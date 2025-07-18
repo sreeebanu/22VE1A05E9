@@ -8,9 +8,9 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<ShortenerPage />} />
-        <Route path="/stats" element={<StatisticsPage />} />
-        <Route path="/:shortcode" element={<Redirector />} />
+        <Route index element={<ShortenerPage />} />
+        <Route path="stats" element={<StatisticsPage />} />
+        <Route path=":shortcode" element={<Redirector />} />
       </Routes>
     </Router>
   );
