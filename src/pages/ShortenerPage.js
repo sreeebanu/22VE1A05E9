@@ -98,7 +98,10 @@ export default function ShortenerPage() {
           <Box key={i} mt={2}>
             <Typography>
               Original: {r.original} <br />
-              Short: <a href={`/${r.short}`}>http://localhost:3000/{r.short}</a> <br />
+              Short: <a href={`/#/${r.short}`}>
+  https://sreeebanu.github.io/22VE1A05E9/#/${r.short}
+</a>
+ <br />
               Expires: {r.expiresAt.toLocaleString()}
             </Typography>
           </Box>
